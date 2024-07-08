@@ -1,15 +1,17 @@
 public class Main {
+    private static final double INTEREST_RATE =0.07d ;
+
     public static void main(String[] args) {
 
-        int first = 0;
-        int ready = 15000;
-        int m = 1;
+        int initialAmount = 0;
+        int depositAmount = 15000;
+        int month = 1;
 
-        while (first <= 2459000) {
+        while (initialAmount <= 2459000) {
 
-            first = first + ready;
-            System.out.println("Месяц " + m + ", сумма накоплений равна " + first + " рублей");
-            m++;
+            initialAmount += depositAmount;
+            System.out.println("Месяц " + month + ", сумма накоплений равна " + initialAmount + " рублей");
+            month++;
         }
 
         int i = 1;
@@ -22,10 +24,12 @@ public class Main {
 
         System.out.println();
 
-        for (i = 10; i >= 1; i--) {
+        do {
 
+            i--;
             System.out.print(" " + i + " ");
-        }
+
+        } while (i > 1);
 
         System.out.println();
 
@@ -39,43 +43,39 @@ public class Main {
         for (int year = 1; year <= 10; year++) {
 
             System.out.println("Год " + year + ", численность населения состовляет " + citizensAtWhole);
-            citizensAtWhole = citizensAtWhole + ((citizensAtWhole / interval) * difference);
+            citizensAtWhole += ((citizensAtWhole / interval) * difference);
 
         }
 
         double start = 15000d;
-        double percent = 0.07d;
 
 
         for (int numberOfMonth = 1; start <= 12000000; numberOfMonth++) {
 
             System.out.println("Сумма накоплений состовляет " + start + " рублей за " + numberOfMonth + " месяцев");
-            start = start + (start * percent);
+            start += (start * INTEREST_RATE);
 
         }
 
-        double full = 15000d;
-        double change = 0.07d;
 
-        for (int month = 0; full <= 12000000; month++) {
+        for (int numberOfMonth = 0; start <= 12000000; numberOfMonth++) {
 
-            if (month % 6 == 0) {
-                System.out.println("Сумма накоплений состовляет " + full + " рублей за " + month + " месяцев");
+            if (numberOfMonth % 6 == 0) {
+                System.out.println("Сумма накоплений состовляет " + start + " рублей за " + numberOfMonth + " месяцев");
             }
-            full = full + (full * change);
+            start += (start * INTEREST_RATE);
 
 
         }
-        double anotherStart = 15000d;
-        double diff = 0.07d;
+
 
 
         for (int part = 1; part <= 108; part++) {
 
-            anotherStart = anotherStart + (anotherStart * diff);
+            start += (start * INTEREST_RATE);
 
             if (part % 6 == 0) {
-                System.out.println("Сумма накоплений состовляет " + anotherStart + " рублей за " + part + " месяцев");
+                System.out.println("Сумма накоплений состовляет " + start + " рублей за " + part + " месяцев");
 
 
             }
